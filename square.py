@@ -1,11 +1,14 @@
-# Class That Stores Information For Each Square
+# Class that stores information for each square
 class Square(object):
-    def __init__(self, row, col):
-        self.loc = (row, col)
+    def __init__(self):
         self.g = float("inf")
+        self.open = None
 
-    # Activate The Square
-    def open(self, g, parent):
-        self.open = True # Temporary
+    def __lt__(self, other):
+        return self.g < other.g
+
+    # Activate the square
+    def activate(self, g, parent):
+        self.open = True
         self.g = g
         self.parent = parent
