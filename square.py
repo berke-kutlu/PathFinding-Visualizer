@@ -1,8 +1,11 @@
 # Class that stores information for each square
 class Square(object):
-    def __init__(self):
+    def __init__(self, r, c):
+        self.loc = (r, c)
         self.g = float("inf")
+        self.key = False
         self.open = None
+        self.wall = False
 
     def __lt__(self, other):
         return self.g < other.g
