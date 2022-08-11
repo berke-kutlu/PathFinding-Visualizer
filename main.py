@@ -1,8 +1,7 @@
 import pygame
 import board
-import square
 import spritesheet as ss
-import djikstra
+import algortihms
 import time
 
 # Get the sprites from spritesheet
@@ -54,7 +53,7 @@ def mainloop(width, height, row, col, s_loc, t_loc):
                     b.click(crow, ccol)
             if event.type == pygame.KEYDOWN and not solve:
                 if event.key == pygame.K_d:
-                    d = djikstra.Algorithm(b, s_loc, t_loc)
+                    d = algortihms.Djikstra(b, s_loc, t_loc)
                     djik = True
                     solve = True
         
@@ -62,11 +61,12 @@ def mainloop(width, height, row, col, s_loc, t_loc):
             if djik:
                 # Loop For The Djikstra
                 if d.solve():
+                    print("Djikstra Algorithm")
+                    print(f"Length: {b.board[t_loc[0]][t_loc[1]].g}")
                     draw(window, b)
                     time.sleep(5)
                     running = False
-                time.sleep(0.2)
-
+            time.sleep(0.2)
         draw(window, b)
     pygame.quit()
     
